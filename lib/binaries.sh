@@ -46,7 +46,7 @@ install_nodejs() {
    
   echo "Downloading and installing node $version... $os-$cpu"
   echo "Downloading and installing node $version..."
-  local download_url="https://nodejs.org/dist/v8.1.4/node-v8.1.4.tar.gz"
+  local download_url="https://s3pository.heroku.com/node/v$version/node-v$version-$os-$cpu.tar.gz"
   local code=$(curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz --write-out "%{http_code}")
   if [ "$code" != "200" ]; then
     echo "Unable to download node $version; does it exist?" && false
