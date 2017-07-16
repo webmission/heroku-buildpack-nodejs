@@ -36,7 +36,7 @@ install_yarn() {
 }
 
 install_nodejs() {
-  local version=${1:-6.x}
+  local version="8.1.4"
   local dir="$2"
 
   if needs_resolution "$version"; then
@@ -45,7 +45,7 @@ install_nodejs() {
   fi
 
   echo "Downloading and installing node $version..."
-  local download_url="https://s3pository.heroku.com/node/v$version/node-v$version-$os-$cpu.tar.gz"
+  local download_url="https://nodejs.org/dist/v8.1.4/node-v8.1.4.tar.gz"
   local code=$(curl "$download_url" --silent --fail --retry 5 --retry-max-time 15 -o /tmp/node.tar.gz --write-out "%{http_code}")
   if [ "$code" != "200" ]; then
     echo "Unable to download node $version; does it exist?" && false
